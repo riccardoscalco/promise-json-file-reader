@@ -1,0 +1,28 @@
+{
+  "name": "promise-json-file-reader",
+  "version": "1.0.0",
+  "description": "Read and parse a File Object with mimetype application/json.",
+  "main": "index.js",
+  "author": "Riccardo Scalco",
+  "license": "MIT",
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "babel": {
+    "presets": [
+      "@ava/stage-4"
+    ]
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "jsdom": "^11.5.1",
+    "xo": "^0.18.2"
+  },
+  "dependencies": {}
+}
