@@ -1,6 +1,6 @@
 {
   "name": "promise-json-file-reader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Read and parse a File Object with mimetype application/json in browser.",
   "repository": {
     "type": "git",
@@ -45,6 +45,9 @@
     "dist"
   ],
   "xo": {
-    "envs": ["browser", "jest"]
+    "envs": [
+      "browser",
+      "jest"
+    ]
   }
 }
