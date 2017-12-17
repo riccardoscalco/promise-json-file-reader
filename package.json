@@ -1,28 +1,51 @@
 {
   "name": "promise-json-file-reader",
   "version": "1.0.0",
-  "description": "Read and parse a File Object with mimetype application/json.",
-  "main": "index.js",
-  "author": "Riccardo Scalco",
+  "description": "Read and parse a File Object with mimetype application/json in browser.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riccardoscalco/promise-json-file-reader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/riccardoscalco/promise-json-file-reader/issues"
+  },
+  "homepage": "https://github.com/riccardoscalco/promise-json-file-reader",
+  "keywords": [
+    "json",
+    "FileReader",
+    "parse",
+    "Blob",
+    "promise",
+    "input"
+  ],
+  "author": {
+    "name": "Riccardo Scalco",
+    "email": "riccardoscalco@gmail.com",
+    "url": "http://riccardoscalco.github.io/"
+  },
   "license": "MIT",
-  "ava": {
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
-  },
-  "babel": {
-    "presets": [
-      "@ava/stage-4"
-    ]
-  },
+  "main": "dist/promise-json-file-reader.js",
+  "module": "dist/index.js",
   "scripts": {
-    "test": "ava"
+    "test": "xo index.js && xo test.js && jest",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "pretest": "rollup -c"
   },
   "devDependencies": {
-    "ava": "^0.24.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^21.2.1",
     "jsdom": "^11.5.1",
+    "rollup": "^0.52.2",
+    "rollup-plugin-babel": "^3.0.2",
     "xo": "^0.18.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "files": [
+    "dist"
+  ],
+  "xo": {
+    "envs": ["browser", "jest"]
+  }
 }

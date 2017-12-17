@@ -1,13 +1,28 @@
-import test from 'ava';
-import jsdom from 'jsdom';
-import m from './';
+const fs = require('fs');
+const {JSDOM} = require('jsdom');
 
-const {JSDOM} = jsdom;
-const {window} = new JSDOM(``, {runScripts: "outside-only"});
-const fixture = {hello: "world"};
-const file = new window.Blob([JSON.stringify(fixture, null, 2)], {type : 'application/json'});
+const myLibrary = fs.readFileSync('./dist/promise-json-file-reader.js', {encoding: 'utf-8'});
 
-test('async', async t => {
-	const data = await m(file);
-	t.is(window.data.hello, 'world');
+let window;
+beforeEach(() => {
+	window = (new JSDOM(``, {runScripts: 'dangerously'})).window;
+	const scriptEl = window.document.createElement('script');
+	scriptEl.textContent = myLibrary;
+	window.document.body.appendChild(scriptEl);
+});
+
+test('data is now an Object', () => {
+	expect.assertions(1);
+	const fixture = {hello: 'world'};
+	const file = new window.Blob([window.JSON.stringify(fixture)], {type: 'application/json'});
+	return window.promiseJsonFileReader(file)
+		.then(data => expect(data.hello).toBe('world'));
+});
+
+test('catch the error', () => {
+	expect.assertions(1);
+	const fixture = {hello: 'world'};
+	const file = new window.Blob([fixture], {type: 'application/json'});
+	return window.promiseJsonFileReader(file)
+		.catch(err => expect(err).toBeTruthy());
 });
