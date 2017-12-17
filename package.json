@@ -16,7 +16,8 @@
     "parse",
     "Blob",
     "promise",
-    "input"
+    "input",
+    "File API"
   ],
   "author": {
     "name": "Riccardo Scalco",
@@ -28,8 +29,6 @@
   "module": "dist/index.js",
   "scripts": {
     "test": "xo index.js && xo test.js && jest",
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
     "pretest": "rollup -c"
   },
   "devDependencies": {
